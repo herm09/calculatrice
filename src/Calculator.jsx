@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { add, sub, mul, div } from './lib/calc';
 import './Calculator.css';
 
 function Calculator() {
@@ -6,10 +7,58 @@ function Calculator() {
   const [num2, setNum2] = useState('');
   const [operation, setOperation] = useState('+');
   const [result, setResult] = useState('');
+  const [error, setError] = useState('');
 
   const handleCalculate = () => {
-    // Logique de calcul à implémenter plus tard
-    setResult('Résultat ici');
+    // Réinitialiser l'erreur
+    setError('');
+
+    // Vérifier que les champs sont remplis
+    if (num1 === '' || num2 === '') {
+      setError('Veuillez remplir les deux champs');
+      setResult('');
+      return;
+    }
+
+    // Convertir les strings en nombres
+    const a = parseFloat(num1);
+    const b = parseFloat(num2);
+
+    // Vérifier que les conversions sont valides
+    if (isNaN(a) || isNaN(b)) {
+      setError('Veuillez entrer des nombres valides');
+      setResult('');
+      return;
+    }
+
+    try {
+      let calculatedResult;
+      switch (operation) {
+        case '+':
+          calculatedResult = add(a, b);
+          break;
+        case '-':
+          calculatedResult = sub(a, b);
+          break;
+        case '×':
+          calculatedResult = mul(a, b);
+          break;
+        case '÷':
+          calculatedResult = div(a, b);
+          break;
+        default:
+          setError('Opération non reconnue');
+          setResult('');
+          return;
+      }
+
+      // Afficher le résultat (arrondir si nécessaire pour éviter les erreurs de précision)
+      setResult(calculatedResult.toString());
+    } catch (err) {
+      // Gérer les erreurs (comme division par zéro)
+      setError(err.message);
+      setResult('');
+    }
   };
 
   return (
@@ -61,11 +110,12 @@ function Calculator() {
           <input
             id="result"
             type="text"
-            value={result}
+            value={result || error || ''}
             readOnly
             placeholder="Le résultat apparaîtra ici"
-            className="result-input"
+            className={`result-input ${error ? 'error' : ''}`}
           />
+          {error && <p className="error-message">{error}</p>}
         </div>
       </div>
     </div>

@@ -107,6 +107,19 @@
   border-color: #4caf50;
 }
 
+.result-input.error {
+  border-color: #f44336;
+  background: #ffebee;
+  color: #c62828;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
 @media (max-width: 600px) {
   .calculator {
     margin: 1rem;
