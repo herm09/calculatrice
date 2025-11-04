@@ -6,7 +6,9 @@ Une calculatrice web développée avec React et Vite, intégrant une pipeline CI
 
 | NOM | Prénom |
 |-----|--------|
-| DOE | John |
+| TETARD | Hermione |
+|-----|--------|
+| Guillemin | Matheo |
 
 *Note : Compléter avec les noms réels des membres du groupe.*
 
