@@ -112,7 +112,7 @@ Les tests couvrent :
 ## Déploiement sur Vercel
 
 ### Accès à la version déployée
-[Lien vers la version déployée sur Vercel](https://calculatrice.vercel.app)
+[Lien vers la version déployée sur Vercel](https://calculatrice-two-rosy.vercel.app/)
 
 *Note : Le lien sera disponible après le premier déploiement réussi via un tag. Remplacer par votre URL Vercel réelle.*
 
